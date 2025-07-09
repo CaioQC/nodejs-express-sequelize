@@ -1,12 +1,11 @@
-class PessoaController { 
-    static async pegaTodas(req, res){
-        try{
-            
-        }
+const Controller = require("./Controller.js")
+const PessoaServices = require("../services/PessoaServices.js")
 
-        catch(erro){
+const pessoaServices = new PessoaServices();
 
-        }
+class PessoaController extends Controller {
+    constructor(){
+        super(pessoaServices)
     }
 }
 
