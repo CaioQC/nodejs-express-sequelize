@@ -10,7 +10,31 @@ class Controller {
         }
 
         catch(erro){
+            console.error(erro)
+        }
+    }
 
+    async pegaUmPorId(req, res) {
+        const { id } = req.params;
+        try {
+            const umRegistro = await this.entidadeService.pegaUmRegistroPorId(Number(id));
+            return res.status(200).json(umRegistro);
+        } 
+        
+        catch (erro) {
+            // erro
+        }
+    }
+    
+    async criaNovo(req, res) {
+        const dadosParaCriacao = req.body;
+        try {
+            const novoRegistroCriado = await this.entidadeService.criaRegistro(dadosParaCriacao);
+            return res.status(200).json(novoRegistroCriado);
+        }
+
+        catch (erro) {
+            console.error(erro)
         }
     }
 
@@ -31,6 +55,18 @@ class Controller {
             console.log(erro);
         }
     }
+
+    async exclui(req, res) {
+        const { id } = req.params;
+        try {
+            await this.entidadeService.excluiRegistro(Number(id));
+            return res.status(200).json({ mensagem: `id ${id} deletado` });
+        } 
+        catch (error) {
+            console.error(erro)
+        }
+    }
+
 }
 
 module.exports = Controller
