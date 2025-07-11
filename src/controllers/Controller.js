@@ -10,7 +10,7 @@ class Controller {
         }
 
         catch(erro){
-            console.error(erro)
+            return res.status(500).json({ erro: erro.message })
         }
     }
 
@@ -22,7 +22,7 @@ class Controller {
         } 
         
         catch (erro) {
-            // erro
+            return res.status(500).json({ erro: erro.message })
         }
     }
     
@@ -34,7 +34,7 @@ class Controller {
         }
 
         catch (erro) {
-            console.error(erro)
+            return res.status(500).json({ erro: erro.message })
         }
     }
 
@@ -63,7 +63,7 @@ class Controller {
             return res.status(200).json({ mensagem: `id ${id} deletado` });
         } 
         catch (error) {
-            console.error(erro)
+            return res.status(500).json({ erro: erro.message })
         }
     }
 
